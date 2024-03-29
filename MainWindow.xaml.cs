@@ -23,6 +23,8 @@ namespace DividedScreen
         public MainWindow()
         {
             InitializeComponent();
+
+            webView1st.Source = new Uri("http://127.0.0.1:5500/index.html");
         }
     }
 }
