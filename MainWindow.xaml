@@ -22,13 +22,14 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="0" />
+                    <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
                 <DockPanel Grid.Row="0">
                     <wv2:WebView2 Name="webView2nd"/>        
                 </DockPanel>
                 <GridSplitter Grid.Row="1" Height="3" Background="#FFE8E8E8" HorizontalAlignment="Stretch" VerticalAlignment="Center" ResizeDirection="Rows" ShowsPreview="True"/>
                 <DockPanel Grid.Row="2">
+                    <Button x:Name="pdf" Content="PDF 생성" DockPanel.Dock="Right" Margin="3,0" Click="pdf_Click"/>
                     <Button x:Name="find" Content="찾기" DockPanel.Dock="Right" Margin="3,0" Click="find_Click"/>
                     <TextBox Name="item" VerticalContentAlignment="Center"/>
                 </DockPanel>

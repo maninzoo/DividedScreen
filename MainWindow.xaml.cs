@@ -1,10 +1,11 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
-using System;
-using System.Windows;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using Microsoft.Win32;
+using System.Threading.Tasks;
 
 namespace DividedScreen
 {
@@ -80,6 +81,34 @@ namespace DividedScreen
 
             message["target"] = "webView2nd";
             runMessage(message);
+        }
+
+        private async Task<bool> PrintPDF()
+        {
+            //var dialog = new SaveFileDialog
+            //{
+            //    DefaultExt = "pdf",
+            //    AddExtension = true,
+            //    FileName = "left"
+            //};
+
+            //if (dialog.ShowDialog() == false) return;
+
+            var printSettings = webView1st.CoreWebView2.Environment.CreatePrintSettings();
+            printSettings.ShouldPrintBackgrounds = true;
+            printSettings.ScaleFactor = 1;
+            printSettings.MarginTop = printSettings.MarginBottom = printSettings.MarginLeft = printSettings.MarginRight = 1;
+            return await webView1st.CoreWebView2.PrintToPdfAsync("C:\\Users\\maninzoo\\Documents\\left.pdf", printSettings);
+        }
+
+        private async void pdf_Click(object sender, RoutedEventArgs e)
+        {
+            Task<bool> t = PrintPDF();
+
+            if( await t )
+            {
+                Console.WriteLine("Printed");
+            }
         }
     }
 }
