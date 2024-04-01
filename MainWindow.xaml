@@ -18,7 +18,21 @@
         </DockPanel>
         <GridSplitter Grid.Column="1" Width="5" Background="Gray" HorizontalAlignment="Center" ShowsPreview="True"/>
         <DockPanel Grid.Column="2">
-            <wv2:WebView2 Name="webView2nd"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="0" />
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0">
+                    <wv2:WebView2 Name="webView2nd"/>        
+                </DockPanel>
+                <GridSplitter Grid.Row="1" Height="3" Background="#FFE8E8E8" HorizontalAlignment="Stretch" VerticalAlignment="Center" ResizeDirection="Rows" ShowsPreview="True"/>
+                <DockPanel Grid.Row="2">
+                    <Button x:Name="find" Content="찾기" DockPanel.Dock="Right" Margin="3,0" Click="find_Click"/>
+                    <TextBox Name="item" VerticalContentAlignment="Center"/>
+                </DockPanel>
+            </Grid>
         </DockPanel>        
     </Grid>
 </Window>

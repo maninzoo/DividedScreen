@@ -14,6 +14,12 @@ namespace DividedScreen
     public partial class MainWindow : Window
     {
         Dictionary<string, WebView2> webViewList = new Dictionary<string, WebView2>();
+
+        JObject message = new JObject(
+                new JProperty("target", ""),
+                new JProperty("action", "select"),
+                new JProperty("coffee", "")
+            );
         
         public MainWindow()
         {
@@ -64,6 +70,16 @@ namespace DividedScreen
             {
                 var result = await webViewList[target].CoreWebView2.ExecuteScriptAsync($@"selectCoffee('{(string)message["coffee"]}', '{target}');");
             }
+        }
+
+        private void find_Click(object sender, RoutedEventArgs e)
+        {
+            message["target"] = "webView1st";
+            message["coffee"] = item.Text;
+            runMessage(message);
+
+            message["target"] = "webView2nd";
+            runMessage(message);
         }
     }
 }
