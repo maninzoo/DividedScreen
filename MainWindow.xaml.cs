@@ -21,6 +21,8 @@ namespace DividedScreen
                 new JProperty("action", "select"),
                 new JProperty("coffee", "")
             );
+
+        string PDF_PATH = "C:\\Users\\maninzoo\\Documents\\left.pdf";
         
         public MainWindow()
         {
@@ -98,7 +100,7 @@ namespace DividedScreen
             printSettings.ShouldPrintBackgrounds = true;
             printSettings.ScaleFactor = 1;
             printSettings.MarginTop = printSettings.MarginBottom = printSettings.MarginLeft = printSettings.MarginRight = 1;
-            return await webView1st.CoreWebView2.PrintToPdfAsync("C:\\Users\\maninzoo\\Documents\\left.pdf", printSettings);
+            return await webView1st.CoreWebView2.PrintToPdfAsync(PDF_PATH, printSettings);
         }
 
         private async void pdf_Click(object sender, RoutedEventArgs e)
@@ -108,6 +110,7 @@ namespace DividedScreen
             if( await t )
             {
                 Console.WriteLine("Printed");
+                webView2nd.Source = new Uri(PDF_PATH);
             }
         }
     }
