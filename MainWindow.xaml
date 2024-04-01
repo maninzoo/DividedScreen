@@ -22,7 +22,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="0" />
                 </Grid.RowDefinitions>
                 <DockPanel Grid.Row="0">
                     <wv2:WebView2 Name="webView2nd"/>        
